@@ -1,12 +1,16 @@
-# 🥪 The Jaffle Shop 🦘
+# thelook-ecommerce-dbt
 
-_powered by the dbt Fusion engine_
+A small dbt project on BigQuery using the public dataset bigquery-public-data.thelook_ecommerce.
 
-Welcome! This is a sandbox project for exploring the basic functionality of Fusion. It's based on a fictional restaurant called the Jaffle Shop that serves [jaffles](https://en.wikipedia.org/wiki/Pie_iron).
+## What is in it
+- Source definitions for order_items, orders, products and users
+- 4 staging models (views): stg_order_items, stg_orders, stg_products, stg_users
+- unique and not_null tests on each model's key (8 tests, all passing)
 
-To get started:
-1. Set up your database connection in `~/.dbt/profiles.yml`. If you got here by running `dbt init`, you should already be good to go.
-2. Run `dbt build`. That's it!
+## Run it
+1. Set up a dbt profile for BigQuery with oauth.
+2. dbt build --select staging
+3. dbt docs generate
 
-> [!NOTE]
-> If you're brand-new to dbt, we recommend starting with the [dbt Learn](https://learn.getdbt.com/) platform. It's a free, interactive way to learn dbt, and it's a great way to get started if you're new to the tool.
+## Next step
+Add column descriptions to the staging models, then build one marts model joining orders to users.
